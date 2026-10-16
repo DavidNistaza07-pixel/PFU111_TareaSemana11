@@ -1,7 +1,6 @@
 from vehiculos_tipos import Trufi, Minibus, Radiotaxi
 
 def main():
-    # Colección común de tipo Vehiculo → DEMUESTRA POLIMORFISMO
     flota = []
 
     while True:
@@ -31,7 +30,7 @@ def main():
                     int(input("Número de rutas: "))
                 )
                 flota.append(veh)
-                print(" Trufi registrado correctamente!")
+                print("✅ Trufi registrado correctamente!")
 
             elif opcion == "2":
                 print("\n--- Registrar Minibús ---")
@@ -44,7 +43,7 @@ def main():
                     int(input("Número de viajes: "))
                 )
                 flota.append(veh)
-                print(" Minibús registrado correctamente!")
+                print("✅ Minibús registrado correctamente!")
 
             elif opcion == "3":
                 print("\n--- Registrar Radiotaxi ---")
@@ -57,14 +56,14 @@ def main():
                     input("Área asignada: ")
                 )
                 flota.append(veh)
-                print(" Radiotaxi registrado correctamente!")
+                print("✅ Radiotaxi registrado correctamente!")
 
             elif opcion == "4":
                 print("\n--- Vehículos Registrados ---")
                 if not flota:
                     print("No hay vehículos registrados.")
                 for v in flota:
-                    print(v.mostrar_informacion())  # ← polimorfismo
+                    print(v.mostrar_informacion())
 
             elif opcion == "5":
                 print("\n--- Costos Operativos ---")
@@ -72,7 +71,6 @@ def main():
                     print("No hay vehículos registrados.")
                 for v in flota:
                     print(f"{v.codigo} ({v.tipo()}) → Costo: ${v.calcular_costo_operativo():.2f}")
-                    # ↑ MISMA LLAMADA → DIFERENTE CÁLCULO según el tipo de objeto
 
             elif opcion == "6":
                 print("\n--- Costo Operativo TOTAL ---")
@@ -80,14 +78,16 @@ def main():
                 print(f"COSTO TOTAL DE LA FLOTA: ${total:.2f}")
 
             elif opcion == "7":
-                print(" Saliendo del sistema...")
+                print("👋 Saliendo del sistema...")
                 break
 
             else:
-                print(" Opción no válida.")
+                print("⚠️ Opción no válida.")
 
         except ValueError as e:
-            print(f" Error: {e}")
+            print(f"❌ Error: {e}")
+        except Exception as e:
+            print(f"❌ Datos inválidos: {e}")
 
 if __name__ == "__main__":
     main()
